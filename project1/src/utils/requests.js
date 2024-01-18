@@ -1,9 +1,12 @@
+const url = 'https://applicationbackend-dev-ssms.2.us-1.fl0.io'
+
 async function post(data) {
+
     const Data = {
         "data": data
     }
 
-    const res = await fetch('http://localhost:3000/post', {
+    const res = await fetch(`${url}/post`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -17,7 +20,7 @@ async function post(data) {
 };
 
 async function get(data) {
-    const res = await fetch(`http://localhost:3000/get/${data}`, {
+    const res = await fetch(`${url}/get/${data}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
