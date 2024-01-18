@@ -1,11 +1,20 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { get } from "../utils/requests";
 
-const Get = () => {
+const Get = ({ changeText, clickEvent }) => {
     const inputRef = useRef();
 
     const handleClick = () => {
-        console.log(inputRef.current.value);
+        const data = inputRef.current.value;
+
+        const resp = get(data)
+            .then(res => {
+                changeText(res);
+            })
+            .catch(e => console.log(e))
+            .finally(res => clickEvent());
     }
+
     return (
 
         <div className="bg-white rounded-md border p-6">
